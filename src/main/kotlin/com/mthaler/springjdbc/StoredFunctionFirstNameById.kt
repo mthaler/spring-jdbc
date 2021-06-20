@@ -8,8 +8,8 @@ import javax.sql.DataSource
 class StoredFunctionFirstNameById(dataSource: DataSource): SqlFunction<String>(dataSource, SQL) {
 
     init {
-        declareParameter(SqlParameter(Types.INTEGER));
-        compile();
+        declareParameter(SqlParameter(Types.INTEGER))
+        compile()
     }
 
     companion object {

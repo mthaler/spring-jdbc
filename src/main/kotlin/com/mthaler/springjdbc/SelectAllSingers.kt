@@ -7,9 +7,7 @@ import javax.sql.DataSource
 
 class SelectAllSingers(dataSource: DataSource): MappingSqlQuery<Singer>(dataSource, SQL_SELECT_ALL_SINGER) {
 
-    override fun mapRow(rs: ResultSet, rowNum: Int): Singer {
-        return Singer(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getDate("birth_date"))
-    }
+    override fun mapRow(rs: ResultSet, rowNum: Int): Singer = Singer(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getDate("birth_date"))
 
     companion object {
 

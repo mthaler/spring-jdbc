@@ -24,6 +24,7 @@ dependencies {
 	implementation("org.apache.commons:commons-dbcp2:2.8.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("junit:junit:4.13.1")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation(kotlin("test"))
 }

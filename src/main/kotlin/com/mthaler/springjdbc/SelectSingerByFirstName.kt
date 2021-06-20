@@ -16,6 +16,7 @@ class SelectSingerByFirstName(dataSource: DataSource): MappingSqlQuery<Singer>(d
     override fun mapRow(rs: ResultSet, rowNum: Int): Singer = Singer(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name"), rs.getDate("birth_date"))
 
     companion object {
+
         private const val SQL_FIND_BY_FIRST_NAME =
             "select id, first_name, last_name, birth_date from singer where first_name = :first_name"
     }

@@ -16,6 +16,7 @@ class InsertSinger(dataSource: DataSource): SqlUpdate(dataSource, SQL_INSERT_SIN
     }
 
     companion object {
+
         private const val SQL_INSERT_SINGER =
             "insert into singer (first_name, last_name, birth_date) values (:first_name, :last_name, :birth_date)"
     }

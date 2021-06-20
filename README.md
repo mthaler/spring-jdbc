@@ -71,3 +71,7 @@ Right-click on the musicdb database in pgAdmin and select *Query Tool* from the 
 ## Import data
 
 Right-click on the musicdb database in pgAdmin and select *Query Tool* from the context menu. Copy and paste the contents of `src/main/resources/sql/test-data.sql` into the Query Tool window and run it.
+
+## Runnig tests
+
+Before running tests, set the correct password in `src/main/resources/db/jdbc2.properties`. `DbConfigTest` tests the database connection, `DbConfigTest` tests typical database CRUD operations.

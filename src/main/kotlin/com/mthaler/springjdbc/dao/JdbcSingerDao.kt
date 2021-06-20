@@ -8,11 +8,13 @@ import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.support.GeneratedKeyHolder
 import org.springframework.jdbc.support.KeyHolder
+import org.springframework.stereotype.Repository
 import java.sql.ResultSet
 import javax.annotation.Resource
 import javax.sql.DataSource
 
-abstract class JdbcSingerDao: SingerDao {
+@Repository("singerDao")
+class JdbcSingerDao: SingerDao {
 
     private lateinit var dataSource: DataSource
     private lateinit var selectAllSingers: SelectAllSingers
@@ -22,6 +24,21 @@ abstract class JdbcSingerDao: SingerDao {
     private lateinit var insertSingerAlbum: InsertSingerAlbum
     private lateinit var deleteSinger: DeleteSinger
     private lateinit var storedFunctionFirstNameById: StoredFunctionFirstNameById
+
+    @Resource(name = "dataSource")
+    fun setDataSource(dataSource: DataSource) {
+        this.dataSource = dataSource
+        selectAllSingers = SelectAllSingers(dataSource)
+        selectSingerByFirstName = SelectSingerByFirstName(dataSource)
+        updateSinger = UpdateSinger(dataSource)
+        insertSinger = InsertSinger(dataSource)
+        storedFunctionFirstNameById = StoredFunctionFirstNameById(dataSource)
+        deleteSinger = DeleteSinger(dataSource)
+    }
+
+    fun getDataSource(): DataSource {
+        return dataSource
+    }
 
     override fun findAll(): List<Singer> {
         return selectAllSingers.execute()
@@ -94,19 +111,29 @@ abstract class JdbcSingerDao: SingerDao {
         } ?: emptyList()
     }
 
-    @Resource(name = "dataSource")
-    fun setDataSource(dataSource: DataSource) {
-        this.dataSource = dataSource
-        selectAllSingers = SelectAllSingers(dataSource)
-        selectSingerByFirstName = SelectSingerByFirstName(dataSource)
-        updateSinger = UpdateSinger(dataSource)
-        insertSinger = InsertSinger(dataSource)
-        storedFunctionFirstNameById = StoredFunctionFirstNameById(dataSource)
-        deleteSinger = DeleteSinger(dataSource)
+    override fun update(singer: Singer) {
+        val paramMap: MutableMap<String, Any> = HashMap()
+        paramMap["first_name"] = singer.firstName
+        paramMap["last_name"] = singer.lastName
+        paramMap["birth_date"] = singer.birthDate
+        paramMap["id"] = singer.id
+        updateSinger.updateByNamedParam(paramMap)
+        logger.info("Existing singer updated with id: " + singer.id)
     }
 
-    fun getDataSource(): DataSource {
-        return dataSource
+    override fun findNameById(id: Long): String {
+        TODO("findNameById")
+    }
+
+    override fun findLastNameById(id: Long): String {
+        TODO("findLastNameById")
+    }
+
+    override fun delete(singerId: Long) {
+        val paramMap: MutableMap<String, Any?> = HashMap()
+        paramMap["id"] = singerId
+        deleteSinger.updateByNamedParam(paramMap)
+        logger.info("Deleting singer with id: $singerId")
     }
 
     companion object {

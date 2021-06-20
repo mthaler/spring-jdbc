@@ -66,7 +66,7 @@ The name should be localhost, switch to the connection tab and enter the require
 
 ## Create tables and stored functions
 
-Right-click on the musicdb database in pgAdmin and select *Query Tool* from the context menu. Copy and paste the contents of `src/main/resources/sql/schema.sql` into the Query Tool window and run it. Also copy and paste the contents of `src/main/resources/sql/stored-function.sql`.
+Right-click on the musicdb database in pgAdmin and select *Query Tool* from the context menu. Copy and paste the contents of `src/main/resources/sql/schema.sql` into the Query Tool window and run it. Also copy and paste the contents of `src/main/resources/sql/stored-function.sql` into the Query Tool window and run it.
 
 ## Import data
 

@@ -13,7 +13,6 @@ import org.springframework.context.support.GenericApplicationContext
 import java.util.*
 import java.util.function.Consumer
 
-
 class AnnotationJdbcTest {
 
     private lateinit var ctx: GenericApplicationContext

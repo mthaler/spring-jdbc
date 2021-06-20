@@ -63,3 +63,7 @@ On Debian Linux, pgAdmin is installed in `/usr/pgadnmin4`. Start pgAdmin and cre
 The name should be localhost, switch to the connection tab and enter the required information:
 
 ![Database Connection](screenshots/connection.jpg)
+
+## Create Tables
+
+Right-click on the musicdb database in pgAdmin and select *Query Tool* from the context menu. Copy and paste the contents of `src/main/resources/schema.sql` into the Query Tool window and run it.

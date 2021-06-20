@@ -1,5 +1,5 @@
 # spring-jdbc
-Spring JDBC example from the *Pro Spring 5* book ported to Kotlin.
+Spring JDBC example from the *Pro Spring 5* book ported to Kotlin and Postgres.
 
 ## Install PostgreSQL
 

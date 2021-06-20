@@ -16,11 +16,15 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-jdbc")
+	implementation("org.springframework:spring-context:5.3.8")
+	implementation("org.springframework:spring-jdbc:5.3.8")
+	implementation("org.slf4j:slf4j-jcl:1.7.31")
+	implementation("ch.qos.logback:logback-classic:1.3.0-alpha5")
+	implementation("javax.annotation:javax.annotation-api:1.3.2")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	runtimeOnly("org.postgresql:postgresql")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation(kotlin("test"))
 }
 
 tasks.withType<KotlinCompile> {

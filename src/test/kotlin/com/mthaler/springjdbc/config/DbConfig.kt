@@ -26,11 +26,6 @@ class DbConfig {
     @Value("\${password}")
     private val password: String? = null
 
-    @Bean
-    fun propertySourcesPlaceholderConfigurer(): PropertySourcesPlaceholderConfigurer? {
-        return PropertySourcesPlaceholderConfigurer()
-    }
-
     @Lazy
     @Bean
     fun dataSource(): DataSource {
@@ -41,5 +36,14 @@ class DbConfig {
         dataSource.username = username
         dataSource.password = password
         return dataSource
+    }
+
+    companion object {
+
+        @Bean
+        @JvmStatic
+        fun propertySourcesPlaceholderConfigurer(): PropertySourcesPlaceholderConfigurer? {
+            return PropertySourcesPlaceholderConfigurer()
+        }
     }
 }

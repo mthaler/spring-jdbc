@@ -45,6 +45,7 @@ class AppConfig {
         private val logger: Logger = LoggerFactory.getLogger(AppConfig::class.java)
 
         @Bean
+        @JvmStatic
         fun propertySourcesPlaceholderConfigurer(): PropertySourcesPlaceholderConfigurer {
             return PropertySourcesPlaceholderConfigurer()
         }

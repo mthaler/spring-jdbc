@@ -1,1 +1,1 @@
-rootProject.name = "springjdbc"
+rootProject.name = "spring-jdbc"

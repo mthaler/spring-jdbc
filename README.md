@@ -74,4 +74,4 @@ Right-click on the musicdb database in pgAdmin and select *Query Tool* from the 
 
 ## Runnig tests
 
-Before running tests, set the correct password in `src/main/resources/db/jdbc2.properties`. `DbConfigTest` tests the database connection, `DbConfigTest` tests typical database CRUD operations.
+Before running tests, set the correct password in `src/main/resources/db/jdbc2.properties`. `DbConfigTest` tests the database connection, `AnnotationJdbcTest` tests typical database CRUD operations.
